@@ -56,3 +56,5 @@ HTTP 요청을 통해 매핑된 URL이 호출되면 서블릿 컨테이너는 �
 > WAS(Tomcat 등) = HTTP + Servlet 의 기능 까지 제공
 
 ![IMAGES](/images/tomcat.JPG)
+
+> HTTP 응답에서 Content-Length 과 같은 정보는 웹 애플리케이션 서버가 자동으로 생성해준다.

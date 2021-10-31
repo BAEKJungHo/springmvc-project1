@@ -55,4 +55,4 @@ HTTP 요청을 통해 매핑된 URL이 호출되면 서블릿 컨테이너는 �
 
 > WAS(Tomcat 등) = HTTP + Servlet 의 기능 까지 제공
 
-![IMAGES](../images/tomcat.JPG)
+![IMAGES](/images/tomcat.JPG)

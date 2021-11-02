@@ -191,7 +191,7 @@ Jackson 라이브러리가 제공하는 objectMapper.writeValueAsString() 를 �
 > response.getWriter()를 사용하면 추가 파라미터를 자동으로 추가해버린다. 이때는
 response.getOutputStream()으로 출력하면 그런 문제가 없다.
 
-## MVC 패턴
+## [MVC 패턴](https://github.com/BAEKJungHo/designpattern/blob/master/DESIGNPATTERN/pattern/MVC.md)
 
 ### 개요
 

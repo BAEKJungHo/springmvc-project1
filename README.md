@@ -455,9 +455,10 @@ return new ModelAndView("/WEB-INF/views/new-form.jsp");
 
 실제로는 더 많지만, 중요한 부분 위주로 설명하기 위해 일부 생략
 
+```
 1 = BeanNameViewResolver : 빈 이름으로 뷰를 찾아서 반환한다. (예: 엑셀 파일 생성 기능에 사용)
 2 = InternalResourceViewResolver : JSP를 처리할 수 있는 뷰를 반환한다.
-
+```
 
 1. 핸들러 어댑터 호출 : 핸들러 어댑터를 통해 new-form 이라는 논리 뷰 이름을 획득한다.
 2. ViewResolver 호출 : new-form 이라는 뷰 이름으로 viewResolver를 순서대로 호출한다.

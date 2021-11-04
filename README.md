@@ -479,3 +479,51 @@ InternalResourceViewResolver 가 호출된다.
 > 참고
 > Thymeleaf 뷰 템플릿을 사용하면 ThymeleafViewResolver 를 등록해야 한다. 최근에는 라이브러리만
 추가하면 스프링 부트가 이런 작업도 모두 자동화해준다.
+
+## 스프링 MVC 실용적인 방식
+
+실무에서는 지금부터 설명하는 방식을 주로 사용한다.
+
+```java
+/**
+ * v3
+ * Model 도입
+ * ViewName 직접 반환
+ * @RequestParam 사용
+ * @RequestMapping -> @GetMapping, @PostMapping
+ */
+@Controller
+@RequestMapping("/springmvc/v3/members")
+public class SpringMemberControllerV3 {
+ 
+ private MemberRepository memberRepository = MemberRepository.getInstance();
+ 
+ @GetMapping("/new-form")
+ public String newForm() {
+    return "new-form";
+ }
+ 
+ @PostMapping("/save")
+ public String save(@RequestParam("username") String username, @RequestParam("age") int age, Model model) {
+     Member member = new Member(username, age);
+     memberRepository.save(member);
+     model.addAttribute("member", member);
+     return "save-result";
+ }
+ @GetMapping
+ public String members(Model model) {
+     List<Member> members = memberRepository.findAll();
+     model.addAttribute("members", members);
+     return "members";
+ }
+}
+```
+
+- Model 파라미터
+  - save() , members() 를 보면 Model을 파라미터로 받는 것을 확인할 수 있다. 스프링 MVC도 이런 편의기능을 제공한다.
+- ViewName 직접 반환
+  - 뷰의 논리 이름을 반환할 수 있다.
+- @RequestParam 사용
+  - 스프링은 HTTP 요청 파라미터를 @RequestParam 으로 받을 수 있다. @RequestParam("username") 은 request.getParameter("username") 와 거의 같은 코드라 생각하면 된다.
+  - 물론 GET 쿼리 파라미터, POST Form 방식을 모두 지원한다.
+- @RequestMapping @GetMapping, @PostMapping

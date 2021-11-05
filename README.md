@@ -687,3 +687,5 @@ List<String> values = map.get("keyA");
 > 참고
 > @Conroller 의 사용 가능한 응답 값 목록은 다음 공식 메뉴얼에서 확인할 수 있다.
 > https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-ann-return-type
+>
+> Jar 를 사용하면 webapp 경로를 사용할 수 없다. 이제부터 정적 리소스도 클래스 경로에 함께 포함해야한다.

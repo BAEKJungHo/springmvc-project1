@@ -689,3 +689,21 @@ List<String> values = map.get("keyA");
 > https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-ann-return-type
 >
 > Jar 를 사용하면 webapp 경로를 사용할 수 없다. 이제부터 정적 리소스도 클래스 경로에 함께 포함해야한다.
+
+#### @RequestParam
+
+- @RequestParam.required
+  - 파라미터 필수 여부
+  - 기본값이 파라미터 필수(`true`)이다.
+- /request-param 요청
+  - username 이 없으므로 400 예외가 발생한다.
+
+- 주의! - 파라미터 이름만 사용
+  - /request-param?username=
+  - 파라미터 이름만 있고 값이 없는 경우 빈문자로 통과
+
+- 주의! - 기본형(primitive)에 null 입력
+  - /request-param 요청
+  - @RequestParam(required = false) int age
+  - null 을 int 에 입력하는 것은 불가능(500 예외 발생)
+  - 따라서 null 을 받을 수 있는 Integer 로 변경하거나, 또는 다음에 나오는 defaultValue 사용

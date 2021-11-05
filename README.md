@@ -707,3 +707,45 @@ List<String> values = map.get("keyA");
   - @RequestParam(required = false) int age
   - null 을 int 에 입력하는 것은 불가능(500 예외 발생)
   - 따라서 null 을 받을 수 있는 Integer 로 변경하거나, 또는 다음에 나오는 defaultValue 사용
+
+```java
+/**
+ * @RequestParam
+ * - defaultValue 사용
+ *
+ * 참고: defaultValue는 빈 문자의 경우에도 적용
+ * /request-param?username=
+ */
+@ResponseBody
+@RequestMapping("/request-param-default")
+public String requestParamDefault(
+        @RequestParam(required = true, defaultValue = "guest") String username,
+        @RequestParam(required = false, defaultValue = "-1") int age) {
+    log.info("username={}, age={}", username, age);
+    return "ok";
+}
+```
+
+#### 파라미터를 Map으로 조회하기 - requestParamMap
+
+```java
+/**
+ * @RequestParam Map, MultiValueMap
+ * Map(key=value)
+ * MultiValueMap(key=[value1, value2, ...] ex) (key=userIds, value=[id1, id2])
+ */
+@ResponseBody
+@RequestMapping("/request-param-map")
+public String requestParamMap(@RequestParam Map<String, Object> paramMap) {
+    log.info("username={}, age={}", paramMap.get("username"),
+            paramMap.get("age"));
+    return "ok";
+}
+```
+
+- @RequestParam Map, 
+  - `Map(key=value)`
+- @RequestParam MultiValueMap
+  - `MultiValueMap(key=[value1, value2, ...] ex) (key=userIds, value=[id1, id2])`
+
+파라미터의 값이 1개가 확실하다면 Map 을 사용해도 되지만, 그렇지 않다면 MultiValueMap 을 사용하자.

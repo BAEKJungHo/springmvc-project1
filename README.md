@@ -961,7 +961,7 @@ public String requestBodyJsonV4(HttpEntity<HelloData> httpEntity) {
 ```java
 /**
  * @RequestBody 생략 불가능(@ModelAttribute 가 적용되어 버림)
- * HttpMessageConverter 사용 -> MappingJackson2HttpMessageConverter (contenttype: application/json)
+ * HttpMessageConverter 사용 -> MappingJackson2HttpMessageConverter (content-type: application/json)
  *
  * @ResponseBody 적용
  * - 메시지 바디 정보 직접 반환(view 조회X)

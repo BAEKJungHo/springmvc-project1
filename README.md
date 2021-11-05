@@ -749,3 +749,13 @@ public String requestParamMap(@RequestParam Map<String, Object> paramMap) {
   - `MultiValueMap(key=[value1, value2, ...] ex) (key=userIds, value=[id1, id2])`
 
 파라미터의 값이 1개가 확실하다면 Map 을 사용해도 되지만, 그렇지 않다면 MultiValueMap 을 사용하자.
+
+### @ModelAttribute
+
+- 롬복 @Data
+  - @Getter , @Setter , @ToString , @EqualsAndHashCode , @RequiredArgsConstructor 를 자동으로 적용해준다.
+
+- 스프링MVC는 @ModelAttribute 가 있으면 다음을 실행한다.
+- HelloData 객체를 생성한다.
+- 요청 파라미터의 이름으로 HelloData 객체의 프로퍼티를 찾는다. 그리고 해당 프로퍼티의 setter 를 호출해서 파라미터의 값을 입력(바인딩)한다.
+- 예) 파라미터 이름이 username 이면 setUsername() 메서드를 찾아서 호출하면서 값을 입력한다.

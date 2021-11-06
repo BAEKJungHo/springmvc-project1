@@ -1007,3 +1007,36 @@ public HelloData requestBodyJsonV5(@RequestBody HelloData data) {
   - http://localhost:8080/basic/hello-form.html
   - 정적 리소스는 해당 파일을 변경 없이 그대로 서비스하는 것이다.
   
+#### 뷰 템플릿
+  
+뷰 템플릿을 거쳐서 HTML 이 생성되고, 뷰가 응답을 만들어서 전달한다.
+
+일반적으로 HTML을 동적으로 생성하는 용도로 사용하지만, 다른 것들도 가능하다. 뷰 템플릿이 만들 수 있는 것이라면 뭐든지 가능하다.
+  
+스프링 부트는 기본 뷰 템플릿 경로를 제공한다.
+
+- 뷰 템플릿 경로
+  - src/main/resources/templates
+- 뷰 템플릿 생성
+  - src/main/resources/templates/response/hello.html
+  - 컨트롤러에서는 반환 값에 뷰의 논리 이름인 `response/hello` 를 써주면 된다.
+  
+## Thymeleaf 스프링 부트 설정
+  
+- build.gradle
+  - `implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'`
+
+스프링 부트가 자동으로 ThymeleafViewResolver 와 필요한 스프링 빈들을 등록한다. 그리고 다음
+설정도 사용한다. 이 설정은 기본 값 이기 때문에 변경이 필요할 때만 설정하면 된다.
+
+- application.properties
+
+```
+spring.thymeleaf.prefix=classpath:/templates/
+spring.thymeleaf.suffix=.html
+```
+  
+> 참고
+>
+> 스프링 부트의 타임리프 관련 추가 설정은 다음 공식 사이트를 참고하자. (페이지 안에서 thymeleaf 검색)
+> https://docs.spring.io/spring-boot/docs/2.4.3/reference/html/appendix-application-properties.html#common-application-properties-templatin

@@ -1107,6 +1107,33 @@ public interface HttpMessageConverter<T> {
   - 요청 예) @RequestBody HelloData data
   - 응답 예) @ResponseBody return helloData 쓰기 미디어타입 `application/json` 관련
 
+- `StringHttpMessageConverter 동작하는 경우`
+
+```java
+content-type: application/json
+
+@RequestMapping
+void hello(@RequestsBody String data) {}
+```
+
+- `MappingJackson2HttpMessageConverter 동작하는 경우`
+
+```java
+content-type: application/json
+
+@RequestMapping
+void hello(@RequestsBody HelloData data) {}
+```
+
+- `동작 X`
+
+```java
+content-type : text/hml
+
+@RequestMapping
+void hello(@RequestsBody HelloData data) {}
+```
+
 #### HTTP 요청 데이터 읽기
 
 - HTTP 요청이 오고, 컨트롤러에서 @RequestBody , HttpEntity 파라미터를 사용한다.

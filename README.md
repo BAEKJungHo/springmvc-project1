@@ -1003,8 +1003,9 @@ public HelloData requestBodyJsonV5(@RequestBody HelloData data) {
   
 - 정적 리소스 경로
   - src/main/resources/static 다음 경로에 파일이 들어있으면
-  - src/main/resources/static/basic/hello-form.html 웹 브라우저에서 다음과 같이 실행하면 된다.
-  - http://localhost:8080/basic/hello-form.html
+    - src/main/resources/static/basic/hello-form.html 
+  - 웹 브라우저에서 다음과 같이 실행하면 된다.
+    - http://localhost:8080/basic/hello-form.html
   - 정적 리소스는 해당 파일을 변경 없이 그대로 서비스하는 것이다.
   
 #### 뷰 템플릿
